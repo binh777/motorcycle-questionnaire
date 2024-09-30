@@ -7,7 +7,19 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             margin: 20px;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .questionnaire-container {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         .question {
             margin-bottom: 20px;
@@ -15,9 +27,14 @@
         .question label {
             display: block;
             margin-bottom: 10px;
+            font-weight: bold;
+            color: #444;
         }
         .button {
-            margin-top: 20px;
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -25,6 +42,7 @@
             color: white;
             border: none;
             border-radius: 5px;
+            text-align: center;
         }
         .button:hover {
             background-color: #0056b3;
@@ -33,16 +51,21 @@
             display: flex;
             align-items: center;
         }
-        .input-group select {
-            margin-left: 10px;
-            padding: 5px;
-            font-size: 16px;
+        .input-group input[type="radio"] {
+            margin-right: 10px;
+        }
+        .motorcycle-image {
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            display: block;
         }
     </style>
 </head>
 <body>
     <h1>Motorcycle Brand Questionnaire</h1>
-    <div id="questionnaire">
+    <img src="https://images.unsplash.com/photo-1601196866048-a126c15e79e1?w=1080" alt="Motorcycle Banner" class="motorcycle-image">
+    <div class="questionnaire-container" id="questionnaire">
         <!-- Questions will be dynamically loaded here -->
     </div>
     <button class="button" onclick="submitAnswers()">Submit</button>
@@ -92,10 +115,12 @@
             questionDiv.innerHTML = `
                 <label>${q.question}</label>
                 <div class="input-group">
-                    <input type="radio" name="q${index}" value="yes" id="q${index}_yes">
-                    <label for="q${index}_yes">Yes</label>
-                    <input type="radio" name="q${index}" value="no" id="q${index}_no">
-                    <label for="q${index}_no">No</label>
+                    <label for="q${index}_yes">
+                        <input type="radio" name="q${index}" value="yes" id="q${index}_yes"> Yes
+                    </label>
+                    <label for="q${index}_no" style="margin-left: 20px;">
+                        <input type="radio" name="q${index}" value="no" id="q${index}_no"> No
+                    </label>
                 </div>
             `;
             questionnaireDiv.appendChild(questionDiv);
