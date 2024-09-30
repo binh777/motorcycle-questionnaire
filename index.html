@@ -10,6 +10,10 @@
             margin: 20px;
         }
         .question {
+            margin-bottom: 20px;
+        }
+        .question label {
+            display: block;
             margin-bottom: 10px;
         }
         .button {
@@ -17,6 +21,22 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+        }
+        .input-group select {
+            margin-left: 10px;
+            padding: 5px;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -41,6 +61,19 @@
             { question: "Would you prefer a motorcycle that is known for its reliability and low maintenance?", "Honda": 3, "Yamaha": 3, "Ducati": 1, "Kawasaki": 2, "CFMoto": 2 },
             { question: "Do you like naked bikes with a minimalist design?", "Honda": 2, "Yamaha": 3, "Ducati": 2, "Kawasaki": 3, "CFMoto": 2 },
             { question: "Are you interested in adventure and off-road biking?", "Honda": 3, "Yamaha": 2, "Ducati": 2, "Kawasaki": 3, "CFMoto": 2 },
+            { question: "Do you prefer bikes with a strong heritage and brand history?", "Honda": 3, "Yamaha": 2, "Ducati": 3, "Kawasaki": 2, "CFMoto": 1 },
+            { question: "Are you looking for an affordable entry-level bike?", "Honda": 2, "Yamaha": 3, "Ducati": 1, "Kawasaki": 1, "CFMoto": 3 },
+            { question: "Do you prefer bikes that are popular in motoGP or other racing events?", "Honda": 3, "Yamaha": 3, "Ducati": 2, "Kawasaki": 1, "CFMoto": 1 },
+            { question: "Is having different customization options important to you?", "Honda": 2, "Yamaha": 1, "Ducati": 2, "Kawasaki": 3, "CFMoto": 2 },
+            { question: "Do you value excellent after-sales service and support?", "Honda": 3, "Yamaha": 2, "Ducati": 1, "Kawasaki": 3, "CFMoto": 1 },
+            { question: "Do you prefer a bike with a striking and aggressive design?", "Honda": 1, "Yamaha": 2, "Ducati": 3, "Kawasaki": 2, "CFMoto": 2 },
+            { question: "Is low seat height important for you?", "Honda": 2, "Yamaha": 1, "Ducati": 3, "Kawasaki": 2, "CFMoto": 1 },
+            { question: "Do you prefer motorcycles with a touring screen?", "Honda": 3, "Yamaha": 2, "Ducati": 1, "Kawasaki": 3, "CFMoto": 1 },
+            { question: "Is having a powerful braking system a priority for you?", "Honda": 2, "Yamaha": 3, "Ducati": 3, "Kawasaki": 2, "CFMoto": 1 },
+            { question: "Do you value a motorcycle with advanced safety features?", "Honda": 3, "Yamaha": 3, "Ducati": 2, "Kawasaki": 1, "CFMoto": 2 },
+            { question: "Is off-the-line acceleration a critical factor for you?", "Honda": 2, "Yamaha": 3, "Ducati": 3, "Kawasaki": 2, "CFMoto": 1 },
+            { question: "Do you prefer motorcycles with a larger fuel tank capacity?", "Honda": 3, "Yamaha": 2, "Ducati": 1, "Kawasaki": 3, "CFMoto": 2 },
+            { question: "Is having a bike that is easy to maintain yourself important?", "Honda": 3, "Yamaha": 2, "Ducati": 1, "Kawasaki": 2, "CFMoto": 2 }
         ];
 
         const scores = {
@@ -57,9 +90,13 @@
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
             questionDiv.innerHTML = `
-                <label>${q.question}</label><br>
-                <input type="radio" name="q${index}" value="yes"> Yes <br>
-                <input type="radio" name="q${index}" value="no"> No
+                <label>${q.question}</label>
+                <div class="input-group">
+                    <input type="radio" name="q${index}" value="yes" id="q${index}_yes">
+                    <label for="q${index}_yes">Yes</label>
+                    <input type="radio" name="q${index}" value="no" id="q${index}_no">
+                    <label for="q${index}_no">No</label>
+                </div>
             `;
             questionnaireDiv.appendChild(questionDiv);
         });
